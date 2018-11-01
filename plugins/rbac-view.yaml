@@ -1,0 +1,55 @@
+# Copyright © 2018 Google Inc.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+apiVersion: krew.googlecontainertools.github.com/v1alpha2
+kind: Plugin
+metadata:
+  name: rbac-view
+spec:
+  version: "v0.2.0"
+  shortDescription: A tool to visualize your RBAC permissions.
+  caveats: |
+    Run "kubectl rbac-view" to open a browser with an html view of your permissions.
+    You can find documentation at https://github.com/jasonrichardsmith/rbac-view.
+  platforms:
+  - uri: https://github.com/jasonrichardsmith/rbac-view/releases/download/v0.2.0/rbac-view.v0.2.0.darwin.tar.gz
+    sha256: b8edb6c9d487a6765d445c549072cae0e87e96286c193aa0fa116df1ba993a7c
+    bin: rbac-view
+    files:
+    - from: bin/darwin/rbac-view
+      to: rbac-view
+    selector:
+      matchLabels:
+        os: darwin
+        arch: amd64
+  - uri: https://github.com/jasonrichardsmith/rbac-view/releases/download/v0.2.0/rbac-view.v0.2.0.linux.tar.gz
+    sha256: 51c59677692fa84112972d398baab364b4d1a77d41aace66a25c274549d52366
+    bin: rbac-view
+    files:
+    - from: bin/linux/rbac-view
+      to: rbac-view
+    selector:
+      matchLabels:
+        os: linux
+        arch: amd64
+  - uri: https://github.com/jasonrichardsmith/rbac-view/releases/download/v0.2.0/rbac-view.v0.2.0.windows.tar.gz
+    sha256: b77f794bc38365dfdae379e2d41d5f590abe898c45c1302139d5b72428162a7c
+    bin: rbac-view
+    files:
+    - from: bin/windows/rbac-view
+      to: rbac-view
+    selector:
+      matchLabels:
+        os: windows
+        arch: amd64
